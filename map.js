@@ -5,7 +5,8 @@ d3.select("body")
     .style("display", "grid")
     .style("max-width", "666px")
     .style("margin-left", "auto")
-    .style("margin-right", "auto");
+    .style("margin-right", "auto")
+    .style("font-family", "'Source Serif 4', serif");
 
 d3.select("#vreg-map")
     .append("h2")
