@@ -294,7 +294,7 @@ var colorOptionsText = colorSelection
     .attr("x", 500)
     .attr("y", (d, i) => i * 30 + 430)
     .text(d => d)
-    .attr("font-size", "10pt")
+    .attr("font-size", "9pt")
 
 // #endregion
 
@@ -538,7 +538,7 @@ Promise.all([
             .text(inputYear + " General Election")
 
         policiesHeader
-            .text("Innovative Registration Policies");
+            .text("Innovative registration policies");
 
         d3.selectAll("li").remove()
 
@@ -580,7 +580,7 @@ Promise.all([
         })
 
         comboHeader
-            .text("Combinations of Policies")
+            .text("Combinations of policies")
 
         var comboBullets = combinations
             .selectAll("li")
