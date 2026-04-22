@@ -67,7 +67,7 @@
     ],
     [
         {"type": "OVR", "maintext": "39 states and DC", "change": "no change from 2020", "implemented": null, "ended": null},
-        {"type": "SDR", "maintext": "24 states and DC", "change": "increase of 2 state from 2020", "implemented": "Massachusetts and Virginia", "ended": null},
+        {"type": "SDR", "maintext": "24 states and DC", "change": "increase of 2 states from 2020", "implemented": "Massachusetts and Virginia", "ended": null},
         {"type": "AVR", "maintext": "20 states and DC", "change": "increase of 3 states from 2020", "implemented": "Hawaii, Maine, and West Virginia", "ended": null},
         {"type": "None", "maintext": "6 states", "change": "no change from 2020", "implemented": null, "ended": null}
     ],
