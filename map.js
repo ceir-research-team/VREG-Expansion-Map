@@ -1,4 +1,10 @@
 // #region SETUP
+function center(selection, y) {
+    var width = selection.node().getBBox().width;
+    var x = selection.node().getBBox().x;
+    selection.attr("transform", "translate(" + ((666-width)/2 - x) + "," + y + ")");
+};
+
 d3.select("body")
     .append("div")
     .attr("id", "vreg-map")
@@ -27,7 +33,7 @@ var yearList = [
         index: 2,
         years: [{year: 2000}, {year: 2004}, {year: 2008},
             {year: 2012}, {year: 2016}, {year: 2020}, {year: 2024}]}
-]
+    ];
 
 var width = 666;
 var height = 550;
@@ -176,8 +182,8 @@ var selectionBar = selectionContainer.append("rect")
             selectionsText.attr("opacity", 0)
             selectionBarSelected = false;
             selectionTri.attr("fill", "#dbdbdb")
-        }
-    })
+        };
+    });
 
 // triangle on selection bar to indicate to click
 var selectionTri = selectionContainer.append("path")
@@ -195,7 +201,7 @@ var selectionBarText = selectionContainer.append("text")
 
 // drop down options
 var selectionOptions = selectionContainer.append("g")
-    .attr("id", "selection-options")
+    .attr("id", "selection-options");
 
 var selections = selectionOptions
     .selectAll("rect")
@@ -217,7 +223,7 @@ var selections = selectionOptions
                 .style("stroke", "#243a76")
                 .style("stroke-width", 0.7)
                 .style("cursor", "pointer");
-        }
+        };
     })
     .on("mouseout", function() {
         d3.select(this)
@@ -270,7 +276,7 @@ var colorOptions = colorSelection.selectAll("rect")
     })
     .on("mouseout", function() {
         d3.select(this).attr("stroke-width", 0);
-    })
+    });
 
 var checkMarks = colorSelection.selectAll("path")
     .data(["OSA", "O", "A", "S"])
@@ -294,7 +300,7 @@ var colorOptionsText = colorSelection
     .attr("x", 500)
     .attr("y", (d, i) => i * 30 + 430)
     .text(d => d)
-    .attr("font-size", "9pt")
+    .attr("font-size", "9pt");
 
 // #endregion
 
@@ -302,7 +308,7 @@ var colorOptionsText = colorSelection
 
 // rectangle connecting years
 var yearTimeline = svg.append("g")
-    .attr("id", "year-timeline")
+    .attr("id", "year-timeline");
 
 // rect connecting years
 var yearRect = yearTimeline
@@ -481,9 +487,7 @@ Promise.all([
             .style("font-weight", "bold");
 
     // centering the map
-    var mapWidth = d3.select('#map-container').node().getBoundingClientRect().width;
-    var containerWidth = d3.select("#vreg-map").node().getBoundingClientRect().width;
-    mapContainer.attr("transform", "translate(" + (containerWidth-mapWidth) / 2 + ", 50)")
+    mapContainer.call(center, 50);
 
     // #endregion
 
@@ -535,12 +539,12 @@ Promise.all([
 
         // update text
         yearHeader
-            .text(inputYear + " General Election")
+            .text(inputYear + " General Election");
 
         policiesHeader
             .text("Innovative registration policies");
 
-        d3.selectAll("li").remove()
+        d3.selectAll("li").remove();
 
         var policyBullets = policies
             .selectAll("li")
@@ -553,34 +557,34 @@ Promise.all([
         policyBullets
             .append("span")
                 .style("font-weight", "bold")
-                .text(d => d.maintext + " ")
+                .text(d => d.maintext + " ");
 
         policyBullets.each(function(d) {
             if (d.change != null) {
                 d3.select(this)
                     .append("span")
-                    .text("(" + d.change + ")")
-            }
+                    .text("(" + d.change + ")");
+            };
 
             var currList = d3.select(this)
-                    .append("ul")
+                .append("ul");
 
             if (d.implemented != null) {
                 currList
                     .append("li")
                     .text("Implemented " + d.type + ": " + d.implemented)
                     .style("list-style-image", "none");
-            }
+            };
 
             if (d.ended != null) {
                 currList
                     .append("li")
                     .text("Ended " + d.type + ": " + d.ended)
-            }
-        })
+            };
+        });
 
         comboHeader
-            .text("Combinations of policies")
+            .text("Combinations of policies");
 
         var comboBullets = combinations
             .selectAll("li")
@@ -593,24 +597,24 @@ Promise.all([
         comboBullets
             .append("span")
                 .style("font-weight", "bold")
-                .text(d => d.maintext + " ")
+                .text(d => d.maintext + " ");
 
         comboBullets.each(function(d) {
             if (d.change != null) {
                 d3.select(this)
                     .append("span")
                     .text("(" + d.change + ")")
-            }
-        })
+            };
+        });
 
         d3.selectAll("h3")
-            .style("font-size", "1.3rem")
+            .style("font-size", "1.3rem");
 
         d3.selectAll("li")
-            .style("font-size", "1.25rem")
+            .style("font-size", "1.25rem");
 
         d3.selectAll("h2")
-            .style("font-size", "1.45rem")
+            .style("font-size", "1.45rem");
     }
 
     // #endregion
@@ -626,8 +630,8 @@ Promise.all([
         } else { // all
             currYear = (currYear + 1) % 14; 
             updateMap(2000 + currYear * 2, currColorFilter);
-        }
-    }
+        };
+    };
 
     // timer needs to be initialized so when the year options are clicked,
     // it has something to reference and stop
